@@ -1,0 +1,10 @@
+FROM ubuntu:22.04
+
+ARG DEBIAN_FRONTEND=noninteractive
+ENV TZ=US/Pacific
+
+RUN apt-get update && \
+      apt-get -y install sudo net-tools iputils-ping iproute2 openssh-client curl ansible htop netcat-openbsd git
+RUN useradd -rm -d /home/tpaszkow -s /bin/bash -g root -G sudo -u 1000 tpaszkow
+RUN adduser tpaszkow sudo
+RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
