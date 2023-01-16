@@ -1,8 +1,16 @@
 
 global_defs {
     router_id {{ inventory_hostname }}
+    enable_script_security
+    script_user root
 }
 
+vrrp_script k8s_master_check {
+  script        "/opt/acid/bin/k8s_master_check.sh"
+  interval 1    # check every 2 seconds
+  fall 10       # require 2 failures for KO
+  rise 5        # require 2 successes for OK
+}
 
 vrrp_instance VI_1 {
     state MASTER
@@ -14,5 +22,8 @@ vrrp_instance VI_1 {
 
     virtual_ipaddress {
         192.168.124.249/24
+    }
+    track_script {
+        k8s_master_check
     }
 }

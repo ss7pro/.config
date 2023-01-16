@@ -23,6 +23,12 @@
     src: kubectl_install.sh.j2
     dest: /opt/acid/bin/kubectl_install.sh
     mode: 755
+- name: Set containered as runtime for crictl
+  become: true
+  ansible.builtin.lineinfile:
+    path: /etc/crictl.yaml
+    regexp: '^runtime\-endpoint'
+    line: 'runtime-endpoint: "unix:/run/containerd/containerd.sock"'
 - name: Run kubectl bootstrap script.
   become: true
   ansible.builtin.shell: /opt/acid/bin/kubectl_install.sh

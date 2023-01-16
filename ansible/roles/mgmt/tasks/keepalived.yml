@@ -10,9 +10,15 @@
     src: keepalived.conf.j2
     dest: /etc/keepalived/keepalived.conf
     mode: 644
+- name: Deploy k8s api-server check script.
+  become: true
+  ansible.builtin.template:
+    src: k8s_master_check.sh.j2
+    dest: /opt/acid/bin/k8s_master_check.sh
+    mode: 700
 - name: enabled and start containerd.
   become: true
   ansible.builtin.systemd:
     name: keepalived
     enabled: yes
-    state: started
+    state: restarted

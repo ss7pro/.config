@@ -20,14 +20,14 @@
     name: containerd.io
     state: present
 
-- name: Generate default contaiinerd config.
+- name: Generate default containerd config.
   become: true
-  ansible.builtin.command: containerd config dump > /etc/containerd/config.toml
+  ansible.builtin.shell: containerd config dump > /etc/containerd/config.toml
   
 - name: enabled and start containerd.
   become: true
   ansible.builtin.systemd:
     name: containerd
     enabled: yes
-    state: started
+    state: restarted
 
