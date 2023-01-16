@@ -1,0 +1,10 @@
+VERSION="v1.24.1"
+curl -L https://github.com/kubernetes-sigs/cri-tools/releases/download/$VERSION/crictl-${VERSION}-linux-amd64.tar.gz --output crictl-${VERSION}-linux-amd64.tar.gz
+sudo tar zxvf crictl-$VERSION-linux-amd64.tar.gz -C /opt/acid/bin
+rm -f crictl-$VERSION-linux-amd64.tar.gz
+
+cat > /etc/crictl.yaml <<EOF
+runtime-endpoint: "unix:/run/containerd/containerd.sock"
+timeout: 0
+debug: false
+EOF

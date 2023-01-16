@@ -1,0 +1,7 @@
+---
+- name: Acid's ssh key
+  ansible.builtin.blockinfile:
+    create: true
+    path: /home/acid/.ssh/authorized_keys
+    block: |
+      ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC6pj2M/g2xXdT4GKfFWHDfy8W3CChdY5zj7BBExuiwpt7Uf5iORMl1tdvWPRLyNv5ED5r3JrJxqbSupw0wXxrocmmVnH4c4Wawaepyn3URxfnTnSxW9ViY7SdeP8jMwYwNwiru2JTQmqGIK0Ot7uT+yNvSzGLQonPqyuls59K3y/opj6w01t1WV5KfknJIemqdtP10J2uzRba/b5VC41ZgJFzAm9qrN9UPJK1yH+kkcAesvpBS/Y/O3Eh3o9pgFdqdcDhgv5sONC58fq5OB8cqrRdrcpS85juRTcgAluIoLfw2K257EpbroGnaXKNPmdRErrU3ZW7dOwXCOtAgxHjCHP+3FzCLLTNaVCb8pDePmR+41R+r4J5ugpo9Dg5wcItoCROhmZJ1f8lPXaPYUXoC17g2SjHYcnlDqyH6aBawd5SSOPuMwUN8i+0bIYXZE+UE87rxBh/W9NjLyNrrG9QSyNRXbxBUoy0f45zOy5/5yOtndKILMRW+1IBj6hLu1UE= acid@localhost-live.lan

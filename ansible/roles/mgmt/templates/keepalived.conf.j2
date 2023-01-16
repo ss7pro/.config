@@ -1,0 +1,18 @@
+
+global_defs {
+    router_id {{ inventory_hostname }}
+}
+
+
+vrrp_instance VI_1 {
+    state MASTER
+    interface enp1s0
+    virtual_router_id 51
+    mcast_src_ip 192.168.124.241
+    priority 100
+    advert_int 1
+
+    virtual_ipaddress {
+        192.168.124.249/24
+    }
+}

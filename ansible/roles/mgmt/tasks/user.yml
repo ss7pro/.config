@@ -1,0 +1,6 @@
+- name: Add acid to a root group.
+  become: true
+  ansible.builtin.user:
+    name: acid
+    groups: root
+    append: yes

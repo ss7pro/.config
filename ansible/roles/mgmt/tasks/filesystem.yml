@@ -1,0 +1,6 @@
+---
+- name: Binary directory.
+  become: true
+  ansible.builtin.file:
+    path: /opt/acid/bin
+    state: directory

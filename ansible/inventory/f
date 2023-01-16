@@ -1,0 +1,4 @@
+[f]
+f1 ansible_host=192.168.124.112
+f2 ansible_host=192.168.124.137
+f3 ansible_host=192.168.124.169

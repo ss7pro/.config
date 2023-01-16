@@ -1,0 +1,37 @@
+---
+- name: Deploy bootstrap script.
+  become: true
+  ansible.builtin.template:
+    src: kube_install.sh.j2
+    dest: /opt/acid/bin/kube_install.sh
+    mode: 755
+- name: Run bootstrap script.
+  become: true
+  ansible.builtin.shell: /opt/acid/bin/kube_install.sh
+- name: Deploy crictl bootstrap script.
+  become: true
+  ansible.builtin.template:
+    src: crictl_install.sh.j2
+    dest: /opt/acid/bin/crictl_install.sh
+    mode: 755
+- name: Run crictl bootstrap script.
+  become: true
+  ansible.builtin.shell: /opt/acid/bin/crictl_install.sh
+- name: Deploy kubectl bootstrap script.
+  become: true
+  ansible.builtin.template:
+    src: kubectl_install.sh.j2
+    dest: /opt/acid/bin/kubectl_install.sh
+    mode: 755
+- name: Run kubectl bootstrap script.
+  become: true
+  ansible.builtin.shell: /opt/acid/bin/kubectl_install.sh
+- name: Reload systemd.
+  become: true
+  ansible.builtin.command: /usr/bin/systemctl daemon-reload
+- name: enable and start kubelet.
+  become: true
+  ansible.builtin.systemd:
+    name: kubelet
+    enabled: yes
+    state: restarted
