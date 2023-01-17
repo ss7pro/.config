@@ -15,6 +15,7 @@
   - iproute2
   - conntrack
   - vim
+  - containernetworking-plugins
 - name: remove conflicting packages.
   become: true
   ansible.builtin.package:

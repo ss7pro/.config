@@ -1,4 +1,4 @@
 [u]
-u1 ansible_host=192.168.124.18
+u1 ansible_host=192.168.124.17
 u2 ansible_host=192.168.124.35
 u3 ansible_host=192.168.124.13

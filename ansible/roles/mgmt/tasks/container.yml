@@ -22,7 +22,15 @@
 
 - name: Generate default containerd config.
   become: true
-  ansible.builtin.shell: containerd config dump > /etc/containerd/config.toml
+  ansible.builtin.shell: containerd config default > /etc/containerd/config.toml
+
+
+- name: Enable systemd integration for containerd.
+  become: true
+  ansible.builtin.lineinfile:
+    path: /etc/containerd/config.toml
+    regexp: 'SystemdCgroup = false'
+    line: '            SystemdCgroup = true'
   
 - name: enabled and start containerd.
   become: true
